@@ -1,0 +1,126 @@
+[
+  {
+    "question": "Mô hình màu là gì? Liệt kê một vài mô hình màu thông dụng.",
+    "answer": "Mô hình màu (hay hệ màu, không gian màu) là một hệ thống quy tắc dùng để biểu diễn mọi màu sắc nhờ kết hợp một tập nhỏ các màu cơ bản.\n\nMột số mô hình màu thông dụng:\n+ RGB (Red, Green, Blue): dùng cho màn hình, camera, thiết bị hiển thị.\n+ CMY và CMYK (Cyan, Magenta, Yellow, Black): dùng trong in ấn.\n+ HSV (Hue, Saturation, Value) và HSL (Hue, Saturation, Lightness): mô tả màu theo cảm nhận trực quan của con người."
+  },
+  {
+    "question": "Mô hình màu CMY là gì? CMY khác RGB ở điểm nào?",
+    "answer": "CMY là hệ màu trừ (subtractive model), dùng trong in ấn. Màu được tạo ra bởi ánh sáng bị hấp thụ khi phản xạ qua mực in Cyan, Magenta và Yellow. Khi trộn cả ba lý tưởng sẽ tạo màu đen.\n\nSự khác nhau:\n\nCMY:\n+ Ba màu CMY là màu bù của ba màu RGB.\n+ Dùng phối màu trừ (giảm ánh sáng phản xạ).\n+ Ưu điểm: biểu diễn được mọi màu trong phổ nhìn thấy.\n+ Nhược điểm: quan hệ giữa các kênh phức tạp, khó xử lý.\n\nRGB:\n+ Dùng phối màu cộng (additive mixing).\n+ Ưu điểm: đơn giản, phổ biến trên thiết bị điện tử.\n+ Nhược điểm: không biểu diễn được toàn bộ phổ màu nhìn thấy."
+  },
+  {
+    "question": "Tại sao người ta phát triển hệ màu HSV và HSL? Ý nghĩa từng thành phần?",
+    "answer": "HSV và HSL được phát triển vì chúng mô tả màu theo cách trực quan, phù hợp với cách con người cảm nhận màu sắc.\n\nÝ nghĩa:\n+ HSV: H = Hue (sắc màu), S = Saturation (độ bão hòa), V = Value (độ sáng/giá trị cường độ).\n+ HSL: H = Hue, S = Saturation, L = Lightness (mức độ sáng tối)."
+  },
+  {
+    "question": "Mô hình lưu trữ raster là gì? Raster khác vector ở điểm nào? Khi nào dùng raster và khi nào dùng vector?",
+    "answer": "Mô hình raster biểu diễn hình ảnh bằng lưới các ô vuông (ma trận pixel).\n\nRaster:\n- Điểm = 1 pixel\n- Đường = chuỗi pixel\n- Vùng = nhóm pixel\n- Kích thước tệp phụ thuộc độ phân giải\n- Thuận lợi trong in ấn và lưu trữ ảnh thật\n\nVector:\n- Điểm = 1 cặp tọa độ\n- Đường = chuỗi cặp tọa độ\n- Vùng = tập tọa độ với điểm đầu và điểm cuối trùng nhau\n- Không phụ thuộc độ phân giải\n- Thuận tiện cho thiết kế đồ họa, mô hình hóa\n\nKhi nào dùng:\n+ Raster: ảnh thật, ảnh chụp, bề mặt liên tục, BMP/TIFF.\n+ Vector: đồ họa, bản vẽ, hình học, ảnh động, cần phóng to không vỡ."
+  },
+  {
+    "question": "Tại sao kỹ thuật nửa cường độ (Halftone) được dùng trong in ấn? Ý tưởng cơ bản của kỹ thuật này là gì?",
+    "answer": "Halftone mô phỏng các mức xám bằng cách thay đổi kích thước hoặc mật độ của các chấm mực đen.\n\nLý do sử dụng:\n+ Tiết kiệm mực khi in.\n+ Tạo được nhiều sắc thái xám dù máy in chỉ in đen trắng.\n+ Mắt người không phân biệt được điểm ảnh nhỏ khi quan sát từ xa.\n\nÝ tưởng cơ bản:\n+ Mắt người nhìn tổng thể vùng sáng tối, không thấy từng chấm riêng lẻ.\n+ Mỗi pixel được mô phỏng bằng một ô vuông chứa một chấm đen.\n+ Chấm càng lớn/dày → vùng càng tối; chấm nhỏ → vùng sáng."
+  },
+  {
+    "question": "Điểm ảnh đa cấp xám với chỉ mục màu đen cần sử dụng kỹ thuật gì? Khuếch tán lỗi hỗ trợ gì cho kỹ thuật này? Vì sao khuếch tán lỗi tốt hơn tách ngưỡng thông thường?",
+    "answer": "Trong in ấn chỉ dùng được mực đen nên cần dùng kỹ thuật Halftone để mô phỏng nhiều mức xám.\n\nKhuếch tán lỗi hỗ trợ bằng cách:\n+ Biến các mức xám đa cấp thành điểm ảnh đen–trắng mà vẫn giữ được sắc thái.\n+ Phân phối phần lỗi tách ngưỡng cho các điểm xung quanh để hình ảnh mượt hơn.\n\nSo với tách ngưỡng thông thường (thresholding):\n+ Thresholding làm tròn giá trị nên mất nhiều thông tin.\n+ Lỗi làm tròn gây sọc, nhiễu.\n+ Error Diffusion giữ lại phần giá trị bị mất bằng cách lan truyền lỗi → ảnh mượt, độ chuyển tiếp sáng tối tự nhiên hơn."
+  },
+  {
+    "question": "Khuếch tán lỗi là gì? Khác nhau giữa khuếch tán lỗi một chiều và hai chiều? Hạn chế nào của phương pháp một chiều được khắc phục bởi hai chiều?",
+    "answer": "Khuếch tán lỗi (Error Diffusion) là một dạng Halftone biến ảnh liên tục (grayscale) thành ảnh nhị phân bằng cách phân tán phần lỗi cho các điểm ảnh lân cận.\n\nKhác nhau:\n• Một chiều (1D):\n  - Quét theo từng dòng.\n  - Lỗi còn dư ở cuối dòng bị bỏ đi → tạo các sọc dọc.\n\n• Hai chiều (2D):\n  - Lỗi được lan truyền cả sang điểm dưới dòng hiện tại.\n  - Duy trì sự liên tục theo cả chiều ngang và dọc.\n\nHạn chế được khắc phục:\n+ 2D giảm hiện tượng tạo sọc dọc (vertical streaks) vốn rất rõ trong kỹ thuật 1D.\n+ Ảnh halftone mịn và đồng đều hơn."
+  },
+  {
+    "question": "Trong ảnh đa mức xám, làm thế nào để tăng hoặc giảm độ sáng? Cần dùng loại toán tử nào?",
+    "answer": "Để thay đổi độ sáng của ảnh đa mức xám, ta thực hiện:\n+ Tăng sáng: I'(x,y) = I(x,y) + c\n+ Giảm sáng: I'(x,y) = I(x,y) - c\n\nTrong đó c là giá trị điều chỉnh độ sáng.\n\nRàng buộc:\n+ Nếu I' < 0 → gán 0\n+ Nếu I' > 255 → gán 255\n\nToán tử sử dụng: **Toán tử điểm** (Point Operator), vì mỗi điểm ảnh được xử lý độc lập, không phụ thuộc điểm ảnh lân cận."
+  },
+  {
+    "question": "Cân bằng tần suất (Histogram Equalization) là gì? Vì sao cần thực hiện cân bằng tần suất?",
+    "answer": "Cân bằng tần suất là quá trình biến đổi ảnh sao cho phân bố mức xám trải đều trên toàn miền giá trị. Mục tiêu là tăng độ tương phản của ảnh.\n\nVì sao cần:\n+ Ảnh tối → histogram dồn về mức xám thấp → thiếu chi tiết.\n+ Ảnh sáng → histogram dồn về mức xám cao → cháy sáng.\n+ Ảnh tương phản thấp → histogram tập trung ở giữa.\n\nCân bằng histogram giúp:\n+ Phân bố đều các mức xám.\n+ Tăng độ tương phản.\n+ Làm nổi bật chi tiết vùng sáng và tối."
+  },
+  {
+    "question": "Biến đổi cửa sổ di chuyển (sliding window / convolution) là gì? Ý tưởng cơ bản của biến đổi này?",
+    "answer": "Cửa sổ di chuyển là cơ chế áp dụng toán tử cục bộ lên từng vùng nhỏ của ảnh bằng cách trượt một ma trận (kernel) trên toàn ảnh.\n\nÝ tưởng:\n+ Giá trị của điểm ảnh mới phụ thuộc vào giá trị các điểm ảnh lân cận và toán tử áp dụng.\n+ Giúp thực hiện các phép:\n  - Lọc nhiễu\n  - Làm trơn\n  - Phát hiện biên\n  - Làm sắc nét ảnh\n  - Nhân chập (Convolution)\n\nCửa sổ di chuyển là công cụ quan trọng trong xử lý ảnh và thị giác máy."
+  },
+  {
+    "question": "Mô hình nhiễu là gì? Tại sao phải dùng mô hình nhiễu? Viết và giải thích mô hình nhiễu rời rạc.",
+    "answer": "Mô hình nhiễu mô tả mối quan hệ giữa ảnh gốc, ảnh bị nhiễu và thành phần nhiễu.\n\nDùng mô hình nhiễu để:\n+ Hiểu ảnh hưởng của nhiễu.\n+ Khôi phục (restore) ảnh gốc.\n\nMô hình nhiễu rời rạc:\n\n  g'[m,n] = h[m,n] * g[m,n] + η[m,n]\n\nTrong đó:\n+ g'[m,n]: ảnh bị nhiễu\n+ g[m,n]: ảnh gốc\n+ h[m,n]: hàm đáp ứng hệ thống (ví dụ mờ – blur)\n+ η[m,n]: nhiễu cộng (additive noise)\n\nĐây là mô hình cơ bản dùng trong khử nhiễu và khôi phục ảnh."
+  },
+  {
+    "question": "Biên là gì? Phát hiện biên trực tiếp là gì? Cho ví dụ về kỹ thuật phát hiện biên trực tiếp.",
+    "answer": "Biên là nơi mức xám thay đổi đột ngột tạo ranh giới giữa các đối tượng trong ảnh.\n\nPhát hiện biên trực tiếp (Direct Edge Detection):\n+ Dựa vào đạo hàm của mức xám.\n+ Làm nổi các vùng có biến thiên cường độ mạnh.\n+ Kết quả là ảnh biên.\n\nVí dụ:\n+ Đạo hàm bậc 1:\n  - Gradient: Ix, Iy → biên = |Ix| + |Iy|\n  - Mặt nạ A = [-1 1], B = [[-1],[1]]\n\n+ Đạo hàm bậc 2:\n  - Laplace: H = [[0,1,0],[1,-4,1],[0,1,0]]\n  - Biên = I ⊗ H (nhân chập)"
+  },
+  {
+    "question": "Phối màu cộng là gì? Phối màu trừ là gì? Khi nào dùng phối màu cộng và khi nào dùng phối màu trừ?",
+    "answer": "Phối màu cộng (Additive Color Mixing):\n+ Tạo màu bằng cách cộng ánh sáng từ các nguồn sáng.\n+ Ba màu gốc: Đỏ – Lục – Lam (RGB).\n+ Chồng 3 tia sáng RGB cùng cường độ → màu trắng.\n+ Dùng trong: màn hình, máy chiếu, camera.\nVí dụ: Đỏ + Lục = Vàng; Đỏ + Lam = Hồng sẫm; Lục + Lam = Xanh lơ.\n\nPhối màu trừ (Subtractive Color Mixing):\n+ Tạo màu bằng cách hấp thụ (trừ) ánh sáng khi phản xạ qua mực/sơn.\n+ Ba màu gốc: Cyan – Magenta – Yellow (CMY).\n+ Trộn càng nhiều mực → càng ít ánh sáng phản xạ → tiến về đen.\n+ Dùng trong in ấn: máy in CMYK.\nVí dụ: Đỏ + Vàng = Da cam; Lam + Vàng = Lục.\n\nTóm lại:\n+ Thiết bị phát sáng dùng RGB (phối màu cộng).\n+ Thiết bị in/ phản xạ ánh sáng dùng CMY/CMYK (phối màu trừ)."
+  },
+  {
+    "question": "Mô hình màu CMY là gì? Tại sao sử dụng hệ màu CMY? Làm thế nào để chuyển từ hệ màu RGB sang hệ màu CMY?",
+    "answer": "Mô hình CMY:\n+ Là mô hình phối màu trừ.\n+ Dùng trong in ấn.\n+ Sử dụng mực Cyan, Magenta và Yellow để hấp thụ ánh sáng.\n+ Cyan + Magenta + Yellow lý tưởng → màu đen.\n\nLý do dùng CMY trong in ấn:\n+ Khi ánh sáng chiếu vào giấy trắng, các lớp mực CMY hấp thụ một phần ánh sáng → màu nhìn thấy là phần còn lại được phản xạ.\n+ Phù hợp với bản chất vật lý của mực in và giấy.\n\nChuyển RGB → CMY (chuẩn hóa về [0,1]):\nC = 1 − R\nM = 1 − G\nY = 1 − B\n\nNếu dùng CMYK thì:\nK = min(C, M, Y)\nC' = (C − K) / (1 − K)\nM' = (M − K) / (1 − K)\nY' = (Y − K) / (1 − K)"
+  },
+  {
+    "question": "Mô hình lưu trữ vector là gì? Vector khác raster ở điểm nào? Nếu vector có nhiều ưu điểm, tại sao vẫn cần ảnh raster?",
+    "answer": "Mô hình vector:\n+ Lưu bằng các tọa độ hình học (điểm, đường, đa giác).\n+ Các đối tượng được mô tả bằng công thức toán học.\n+ Không phụ thuộc độ phân giải.\n\nKhác nhau giữa raster và vector:\nRaster:\n- Biểu diễn bằng ma trận pixel.\n- Dung lượng phụ thuộc độ phân giải.\n- Phù hợp ảnh thật, ảnh liên tục.\n\nVector:\n- Biểu diễn bằng tọa độ và đường cong.\n- Phóng to không vỡ.\n- Phù hợp cho thiết kế, logo, bản vẽ.\n\nTại sao vẫn cần raster?\n+ Ảnh chụp từ đời thực không thể mô tả bằng công thức hình học.\n+ Dữ liệu pixel chứa chi tiết phức tạp mà vector không thể tái tạo trực tiếp.\n+ Chuyển ảnh thật sang vector đòi hỏi tính toán phức tạp và mất dữ liệu.\n→ Vì vậy raster vẫn là định dạng chuẩn cho ảnh thật, xử lý ảnh số, thị giác máy."
+  },
+  {
+    "question": "Lọc trung vị khác lọc trung bình và lọc trung bình theo k giá trị gần nhất như thế nào? Khi nào nên dùng từng loại?",
+    "answer": "Lọc trung vị (Median Filter):\n+ Lấy giá trị trung vị của các pixel trong cửa sổ.\n+ Giảm nhiễu muối tiêu rất tốt.\n+ Giữ cạnh tốt hơn lọc trung bình.\n→ Dùng khi ảnh có nhiễu xung đột, nhiễu muối tiêu.\n\nLọc trung bình (Mean Filter):\n+ Lấy trung bình cộng tất cả pixel.\n+ Làm mờ ảnh, giảm nhiễu nhẹ nhưng làm mất cạnh.\n→ Dùng khi cần làm trơn toàn cục, ảnh không yêu cầu giữ cạnh.\n\nLọc trung bình theo k giá trị gần nhất:\n+ Chỉ lấy trung bình của k pixel gần nhất về cường độ so với pixel cần xét.\n+ k lớn → giống lọc trung bình.\n+ k = 1 → ảnh giữ nguyên.\n→ Dùng khi muốn làm trơn nhưng vẫn chú ý nhóm giá trị gần nhau (giảm ảnh hưởng pixel nhiễu bất thường)."
+  },
+  {
+    "question": "Phát hiện biên bằng đạo hàm dựa trên nguyên lý gì? Ma trận (-1 1) có ý nghĩa gì?",
+    "answer": "Phát hiện biên bằng đạo hàm dựa trên việc mức xám thay đổi mạnh tại biên → đạo hàm đạt cực đại.\n\nÝ nghĩa ma trận [-1 1]:\n+ Là mặt nạ nhân chập xấp xỉ đạo hàm theo trục x.\n+ Tính gần đúng: Ix ≈ f(x+1, y) − f(x, y)\n+ Làm nổi sự thay đổi theo phương ngang.\n→ Dùng trong các bộ lọc biên bậc 1 (gradient)."
+  },
+  {
+    "question": "Phát hiện biên bằng đạo hàm dựa trên nguyên lý gì? Hãy nêu ba loại ma trận nhân chập có thể tìm biên và nguyên lý hoạt động của chúng.",
+    "answer": "Nguyên lý:\n+ Biên xuất hiện tại nơi mức xám thay đổi đột ngột.\n+ Đạo hàm đạt cực đại tại vị trí biên → dùng đạo hàm bậc 1 hoặc bậc 2 để phát hiện biên.\n\nBa loại ma trận nhân chập:\n\n1) Prewitt:\n+ Dùng hai mặt nạ xấp xỉ đạo hàm theo hướng x và y.\n+ Gx = [[-1,0,1],[-1,0,1],[-1,0,1]]\n+ Gy = [[1,1,1],[0,0,0],[-1,-1,-1]]\n+ Sau khi tính G = sqrt(Gx² + Gy²), áp dụng ngưỡng để tạo ảnh biên.\n\n2) Sobel:\n+ Giống Prewitt nhưng trọng số trung tâm lớn hơn → nhạy cảm với nhiễu ít hơn.\n+ Gx = [[-1,0,1],[-2,0,2],[-1,0,1]]\n+ Gy = [[1,2,1],[0,0,0],[-1,-2,-1]]\n\n3) Laplace (đạo hàm bậc 2):\n+ Phát hiện biên bằng độ cong của mức xám.\n+ Mặt nạ: [[0,1,0],[1,-4,1],[0,1,0]]\n+ Nhạy với nhiễu → thường dùng sau làm trơn (Gaussian + Laplacian)."
+  },
+
+  {
+    "question": "Thuật toán Canny có mấy bước? Bước nào quan trọng nhất và vì sao?",
+    "answer": "Canny có 5 bước:\n1) Làm trơn ảnh bằng Gaussian để giảm nhiễu.\n2) Tính gradient (độ lớn và hướng) bằng Sobel/Prewitt.\n3) Tính hướng gradient tại mỗi điểm.\n4) Non-Maximum Suppression: loại bỏ điểm không phải cực đại theo hướng gradient.\n5) Double Threshold + Hysteresis Tracking: phân ngưỡng mạnh/yếu và nối biên.\n\nBước quan trọng nhất:\n+ **Non-Maximum Suppression (bước 4)** vì bước này đảm bảo đường biên sắc, mảnh và chính xác.\n+ Nếu không có bước này, biên sẽ bị dày và không rõ ràng."
+  },
+
+  {
+    "question": "Phân vùng dùng thuật toán đối xứng nền là gì? Khi nào thuật toán này cho kết quả tốt nhất?",
+    "answer": "Đối xứng nền là kỹ thuật phân vùng dựa trên giả định rằng:\n+ Phân bố của nền và đối tượng trong histogram đối xứng qua một điểm đỉnh lớn nhất.\n+ Từ đó tìm được ngưỡng phân tách nền–đối tượng.\n\nKết quả tốt khi:\n+ Phân phối nền lớn hơn nhiều so với đối tượng.\n+ Histogram của nền và đối tượng đều đối xứng.\n+ Đối tượng nhỏ, không che khuất dạng đối xứng của nền.\n\nNếu đối tượng quá lớn → thuật toán chọn sai ngưỡng."
+  },
+
+  {
+    "question": "Thuật toán tam giác trong phân vùng là gì? Ý tưởng cơ bản? Trường hợp nào không nên dùng?",
+    "answer": "Ý tưởng:\n+ Vẽ đường thẳng từ điểm histogram có tần suất cao nhất (đỉnh) đến điểm có tần suất thấp nhất (min).\n+ Tìm điểm trên histogram cách xa nhất đường này → đó là ngưỡng phân vùng.\n\nKhông nên dùng khi:\n+ Histogram có nhiều đỉnh.\n+ Đỉnh nằm gần giữa → khoảng cách không rõ.\n+ Đối tượng không nhỏ hơn nền → giả định tam giác sai → ngưỡng không chính xác."
+  },
+
+  {
+    "question": "Kỹ thuật tách cây tứ phân và hợp (split-and-merge) dựa vào ý tưởng gì? Yếu tố nào đánh giá tính chính xác?",
+    "answer": "Ý tưởng:\n+ Chia ảnh thành các vùng nhỏ (tứ phân) cho đến khi vùng đủ thuần nhất.\n+ Sau đó hợp lại những vùng có thuộc tính tương tự.\n\nĐánh giá độ chính xác phụ thuộc vào:\n+ Tiêu chuẩn thuần nhất (mức xám, màu sắc, kết cấu...).\n+ Độ lệch chuẩn và trung bình của vùng.\n+ Ngưỡng quyết định tách hay hợp.\n+ Độ nhất quán giữa các vùng lân cận."
+  },
+
+  {
+    "question": "Thuật toán K-Means là gì? Ý tưởng cơ bản? Yếu tố nào ảnh hưởng lớn đến hiệu quả của thuật toán?",
+    "answer": "K-Means là kỹ thuật phân cụm dữ liệu vào K nhóm.\n\nÝ tưởng:\n+ Chọn K tâm cụm.\n+ Gán mỗi điểm dữ liệu vào cụm có tâm gần nhất.\n+ Cập nhật lại tâm.\n+ Lặp lại cho đến khi hội tụ.\n\nYếu tố ảnh hưởng lớn nhất:\n+ Chọn K phù hợp.\n+ Chọn tâm khởi tạo (ảnh hưởng đến kết quả cuối cùng).\n+ Dữ liệu có phân bố không đồng đều → dễ rơi vào cực trị cục bộ.\n+ K-Means chỉ tối ưu khoảng cách Euclid → không hợp cho cụm không lồi."
+  },
+
+  {
+    "question": "Thuật toán K láng giềng gần nhất (KNN) là gì? Dùng để làm gì? Ý tưởng cơ bản?",
+    "answer": "KNN là thuật toán phân lớp dựa trên các điểm gần nhất trong không gian đặc trưng.\n\nDùng để:\n+ Phân lớp (classification).\n+ Hồi quy (regression) trong một số biến thể.\n+ Nhận dạng mẫu.\n\nÝ tưởng:\n+ Xét K điểm gần nhất với điểm cần phân lớp.\n+ Điểm thuộc lớp nào có số lượng nhiều nhất trong K điểm → dự đoán lớp đó.\n\nƯu điểm:\n+ Đơn giản, dễ hiểu, không cần huấn luyện mô hình.\n\nNhược điểm:\n+ Chậm nếu dữ liệu lớn.\n+ Nhạy cảm với việc chọn K.\n+ Nhạy cảm với nhiễu và thang đo đặc trưng."
+  },
+
+  {
+    "question": "Mạng Hopfield là gì? Cấu tạo và cơ chế hoạt động?",
+    "answer": "Mạng Hopfield là mạng nơ-ron hồi tưởng (associative memory), dùng để lưu trữ và truy hồi mẫu.\n\nCấu tạo:\n+ Một lớp nơ-ron duy nhất.\n+ Tất cả nơ-ron kết nối đầy đủ với nhau.\n+ Trọng số đối xứng, không có kết nối tự thân.\n+ Đầu vào yêu cầu dạng lưỡng cực (-1, +1).\n\nHoạt động:\n+ Huấn luyện bằng quy tắc Hebb:\n  W = Σ (x_s × x_s^T) với mọi mẫu s.\n+ Khi đưa mẫu mới X vào → hệ thống lặp cho đến khi ổn định.\n+ Kết quả là mẫu gần nhất với các mẫu đã học (khả năng hồi tưởng)."
+  },
+
+  {
+    "question": "Mạng Kohonen là gì? Ý tưởng cơ bản và khía cạnh mô phỏng não người?",
+    "answer": "Mạng Kohonen còn gọi là SOM (Self-Organizing Map) hoặc bản đồ tự tổ chức.\n\nÝ tưởng:\n+ Map dữ liệu đa chiều vào lưới 2D sao cho các mẫu giống nhau nằm gần nhau.\n+ Học không giám sát.\n+ Giảm chiều không gian dữ liệu.\n\nKhía cạnh mô phỏng não người:\n+ Các nơ-ron sắp xếp theo quan hệ láng giềng.\n+ Đầu vào giống nhau kích hoạt những nơ-ron gần nhau.\n+ Mô phỏng vỏ não thị giác – hệ thống ánh xạ không gian.\n\nCơ chế chính:\n+ Tìm Best Matching Unit (BMU).\n+ Cập nhật vùng lân cận BMU → tự tổ chức thành bản đồ 2D."
+  },
+
+  {
+    "question": "Mã hóa loạt dài RLC là gì? Khi nào RLC làm tăng kích thước dữ liệu?",
+    "answer": "RLC (Run-Length Coding) là kỹ thuật nén dữ liệu bằng cách biểu diễn các chuỗi ký tự lặp lại liên tiếp dưới dạng (giá trị, số lần lặp).\n\nVí dụ: 00000 → (0,5)\n\nRLC làm tăng kích thước khi:\n+ Chuỗi lặp quá ngắn.\n+ Dữ liệu thay đổi liên tục, không có đoạn lặp.\n+ Mỗi đoạn lặp phải lưu ít nhất 1 byte nhưng bản thân chuỗi gốc lại ngắn hơn.\nVí dụ: mã hóa 00000 thành 0x05 → thành 8 bit thay vì 5 bit."
+  },
+
+  {
+    "question": "Biến đổi Cosine trong JPEG nhằm mục đích gì? Bước nào khiến nén JPEG trở thành nén không bảo toàn?",
+    "answer": "Mục đích của DCT trong JPEG:\n+ Chuyển ảnh từ miền không gian sang miền tần số.\n+ Tách thành phần tần số thấp (quan trọng) và tần số cao (ít quan trọng với mắt người).\n+ Tạo điều kiện để loại bỏ thông tin không quan trọng.\n\nBước làm JPEG trở thành nén không bảo toàn:\n+ **Lượng tử hóa (Quantization)**: các hệ số tần số cao bị chia và làm tròn → nhiều giá trị trở thành 0 → mất mát dữ liệu.\n\nThực tế có hai nguồn gây mất mát:\n1) Lượng tử hóa (chính yếu).\n2) Sai số dấu chấm động trong tính toán DCT (nhỏ nhưng vẫn có)."
+  }
+]
+
+
